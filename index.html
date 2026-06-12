@@ -1,0 +1,83 @@
+<script> 
+
+    function getComputerChoice() {
+        let first = "paper";
+        let second = "rock";
+        let third = "scissors";
+
+        const choice = Math.random();
+
+        if ( choice < 1/3 ) {
+            return first;
+        } else if (choice < 2/3 ) {
+            return second;
+        } else {
+            return third;
+        }
+    }
+    function getHumanChoice() {
+        
+        const choice = prompt("Please choose a string");
+
+        return choice.toLowerCase();
+
+    }
+    
+    
+    function playGame() {
+    let humanScore = 0;
+    let computerScore = 0;
+    
+    for (let i = 0; i < 5; i++) {
+        
+        playRound(getHumanChoice(), getComputerChoice());
+    } 
+    console.log(`Game over! - Computer Score: ${computerScore} | Human Score: ${humanScore}`);
+    
+    if (computerScore < humanScore) {
+        console.log("You win the game!");
+    } else if (humanScore < computerScore) {
+        console.log("You lose the game!");
+    } else {
+        console.log("You draw")
+    }
+    
+    function playRound(humanChoice, computerChoice) {
+
+
+            if (humanChoice === computerChoice) {
+                console.log(`Draw - ${humanChoice} is the same as ${computerChoice}`)
+        
+            } else if (humanChoice === "paper" && computerChoice === "rock") {
+                console.log(`You Win - ${computerChoice} beats ${humanChoice}!`);
+                humanScore += 25;
+        
+            } else if (humanChoice === "rock" && computerChoice === "scissors") {
+                console.log(`You win - ${humanChoice} beats ${computerChoice}!`);
+                humanScore += 25;
+        
+            } else if (humanChoice === "scissors" && computerChoice === "paper") {
+                console.log(`You win - ${humanChoice} beats ${computerChoice}!`);
+                humanScore += 25;
+        
+            } else {
+                console.log(`You Lose - ${computerChoice} beats ${humanChoice}!`);
+                computerScore += 25;
+            }
+            
+
+            
+        }
+    }
+    playGame()
+
+
+    
+
+    
+
+    
+    
+
+
+</script>
