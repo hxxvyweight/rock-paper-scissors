@@ -35,39 +35,55 @@
         } else {
             return third;
         }
+        
+        return choice.toLowerCase();
     }
     
-    let humanScore = 0;
-    let computerScore = 0;
+    
     
     function playRound(humanChoice, computerChoice) {
 
+            let humanScore = 0;
+            let computerScore = 0;
 
             if (humanChoice === computerChoice) {
                 console.log(`Draw - ${humanChoice} is the same as ${computerChoice}`)
         
             } else if (humanChoice === "paper" && computerChoice === "rock") {
                 console.log(`You Win - ${computerChoice} beats ${humanChoice}!`);
-                humanScore += 25;
+                humanScore += 1;
+
         
             } else if (humanChoice === "rock" && computerChoice === "scissors") {
                 console.log(`You win - ${humanChoice} beats ${computerChoice}!`);
-                humanScore += 25;
+                humanScore += 1;
         
             } else if (humanChoice === "scissors" && computerChoice === "paper") {
                 console.log(`You win - ${humanChoice} beats ${computerChoice}!`);
-                humanScore += 25;
+                humanScore += 1;
         
             } else {
                 console.log(`You Lose - ${computerChoice} beats ${humanChoice}!`);
-                computerScore += 25;
+                computerScore += 1;
             }
-            
 
             
         }
     
     const container = document.createElement("div");
+
+    const subContainer = document.createElement("div");
+
+    subContainer.style.backgroundColor = "white";
+
+
+
+
+    container.appendChild(subContainer);
+
+
+    container.style.padding = "48px 48px";
+    container.style.backgroundColor = "orange";
     
     container.id = "container";
 
@@ -86,26 +102,19 @@
     //On button click needs to return a string
 
     btn.addEventListener("click", () => {
-        playRound("paper", computerChoice);
+        playRound("paper", getComputerChoice());
     });
         
     btnTwo.addEventListener("click", () => { 
-        playRound("rock", computerChoice);
+        playRound("rock", getComputerChoice());
     });
         
     btnThree.addEventListener("click", () => {
-        playRound("scissors", computerChoice);
+        playRound("scissors", getComputerChoice());
     });
     
-    const btnStart = document.createElement("button");
+   
 
-    container.appendChild(btnStart);
-
-    btnStart.addEventListener("click", () => {
-        playRound(getHumanChoice(), getComputerChoice());
-    } )
-
-    playGame()
 
     
 
