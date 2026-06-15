@@ -40,6 +40,7 @@
     }
     let humanScore = 0;
     let computerScore = 0;
+
     
     
     function playRound(humanChoice, computerChoice) {
@@ -75,19 +76,40 @@
         }
     
     function updateScore() {
-        subContainer.textContent = (`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
+        subContainer.textContent = (`Human Score: ${humanScore} Computer Score: ${computerScore}`);
     }
     
     const container = document.createElement("div");
 
     const subContainer = document.createElement("div");
 
-    subContainer.style.backgroundColor = "white";
+    
+    
+    container.textContent = "Play Game";
+    container.addEventListener("click", () => {
+        playGame()
+    });
+
+
+    
+    container.id = "container";
+
+    document.body.appendChild(container);
+        
+    
+    //Function now has too have 3 buttons for player to play
+    //On button click needs to return a string
+
+    
+    
+    function playGame() {
+    
+    container.textContent = "";
+
+
     
     
     container.appendChild(subContainer);
-    container.style.padding = "48px 48px";
-    container.style.backgroundColor = "orange";
     
     container.id = "container";
 
@@ -102,9 +124,7 @@
     btnThree.textContent = "Scissors";
 
     container.append(btn, btnTwo, btnThree);
-    //Function now has too have 3 buttons for player to play
-    //On button click needs to return a string
-
+    
     btn.addEventListener("click", () => {
         playRound("paper", getComputerChoice());
     });
@@ -117,11 +137,17 @@
         playRound("scissors", getComputerChoice());
     });
     
-   
-
-
+    if (humanScore === 5 || computerScore === 5) {
+        if (humanScore > computerScore) {
+            container.remove();
+            alert("You Win!")
+        } else {
+        container.remove();
+        alert("You lose :(");
+        }
+    }
+}
     
-
     
 
     
