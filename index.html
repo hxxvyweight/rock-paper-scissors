@@ -38,13 +38,13 @@
         
         return choice.toLowerCase();
     }
-    
+    let humanScore = 0;
+    let computerScore = 0;
     
     
     function playRound(humanChoice, computerChoice) {
 
-            let humanScore = 0;
-            let computerScore = 0;
+            
 
             if (humanChoice === computerChoice) {
                 console.log(`Draw - ${humanChoice} is the same as ${computerChoice}`)
@@ -52,36 +52,40 @@
             } else if (humanChoice === "paper" && computerChoice === "rock") {
                 console.log(`You Win - ${computerChoice} beats ${humanChoice}!`);
                 humanScore += 1;
+                updateScore();
 
         
             } else if (humanChoice === "rock" && computerChoice === "scissors") {
                 console.log(`You win - ${humanChoice} beats ${computerChoice}!`);
                 humanScore += 1;
+                updateScore();
         
             } else if (humanChoice === "scissors" && computerChoice === "paper") {
                 console.log(`You win - ${humanChoice} beats ${computerChoice}!`);
                 humanScore += 1;
+                updateScore();
         
             } else {
                 console.log(`You Lose - ${computerChoice} beats ${humanChoice}!`);
                 computerScore += 1;
+                updateScore();
             }
 
             
         }
+    
+    function updateScore() {
+        subContainer.textContent = (`Human Score: ${humanScore}\nComputer Score: ${computerScore}`);
+    }
     
     const container = document.createElement("div");
 
     const subContainer = document.createElement("div");
 
     subContainer.style.backgroundColor = "white";
-
-
-
-
+    
+    
     container.appendChild(subContainer);
-
-
     container.style.padding = "48px 48px";
     container.style.backgroundColor = "orange";
     
